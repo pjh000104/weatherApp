@@ -28,6 +28,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
 }
 
 h1 {
@@ -66,3 +69,278 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.inner_bg{
+  background-image: url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rain_animation_homedepot5.gif);
+  width: 100%;
+  height: 516px;
+  /* let's lighten it up */
+    opacity: 0.2;
+}
+
+.rainy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rainstill_homedepot.jpg), 
+                    url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rain_animation_homedepot5.gif);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center top;
+  background-size: cover, cover;
+  z-index: -1; /* Ensures it stays behind the content */
+}
+
+
+
+
+.ground {
+position: absolute;
+bottom: 0;
+right: -1em;
+background: linear-gradient(to bottom, #658433, #36471b);
+height: 6em;
+width: 101%;
+border-radius: 50% 50% 0 0;
+box-shadow: inset 0 .5em 1em lightyellow;
+}
+
+.tree.one > .top {
+position: absolute;
+bottom: 12em;
+right: 7em;
+background: linear-gradient(to bottom, #99AC5E, #658433);
+height: 10em;
+width: 10em;
+border-radius: 50%;
+box-shadow: inset .5em 1em 5em lightyellow;
+}
+.tree.one > .overlap {
+position: absolute;
+bottom: 12.5em;
+right: 10em;
+background: linear-gradient(to bottom, transparent, #99AC5E 98%);
+height: 2em;
+width: 3.5em;
+border-radius: 50%;
+box-shadow: 0 .3em .2em #36471b;
+z-index: 2;
+}
+.tree.one > .trunk {
+position: absolute;
+bottom: 3em;
+right: 11em;
+background: linear-gradient(#8e724e, #422f15);
+height: 10em;
+width: 1.5em;
+border-radius: .1em;
+box-shadow: inset .1em 0em .2em lightyellow;
+}
+
+.tree.two > .top {
+position: absolute;
+bottom: 10em;
+right: 24em;
+background: linear-gradient(to bottom, #99AC5E, #658433);
+height: 7em;
+width: 7em;
+border-radius: 50%;
+box-shadow: inset .5em 1em 5em lightyellow;
+}
+.tree.two > .overlap {
+position: absolute;
+bottom: 10.5em;
+right: 26em;
+background: linear-gradient(to bottom, transparent, #99AC5E 98%);
+height: 2em;
+width: 2.5em;
+border-radius: 50%;
+box-shadow: 0 .3em .2em #36471b;
+z-index: 2;
+}
+.tree.two > .trunk {
+position: absolute;
+bottom: 3em;
+right: 26.5em;
+background: linear-gradient(#8e724e, #422f15);
+height: 8em;
+width: 1.5em;
+border-radius: .1em;
+box-shadow: inset .1em 0em .2em lightyellow;
+}
+
+
+.sun-rays {
+position: absolute;
+bottom: 32em;
+right: 18em;
+height: 15em;
+width: 15em;
+z-index: -5;
+background: radial-gradient(rgba(255, 237, 175, .8) 50%, rgba(255, 237, 175, .2) 70%);
+border-radius: 50%;
+box-shadow: 0 0 .5em rgba(255, 237, 175, 1);
+-webkit-animation: rays 10s infinite;
+-moz-animation: rays 10s infinite;
+animation: rays 10s infinite;
+}
+.sun {
+position: absolute;
+bottom: 34.5em;
+right: 20.5em;
+height: 10em;
+width: 10em;
+z-index: -5;
+background: rgba(255, 237, 175, 1);
+border-radius: 50%;
+box-shadow: 0 0 1em rgba(255, 237, 175, .5), inset 0 0 .5em #FFFFAD;
+}
+
+
+/*Sun Animation*/
+@-webkit-keyframes rays {
+  0% {
+      transform: scale(1.1);
+  }
+  25% {
+      transform: scale(0.9);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  75% {
+      transform: scale(0.9);
+  }
+  100% {
+      transform: scale(1.1);
+  }
+}
+
+@-moz-keyframes rays {
+  0% {
+      transform: scale(1.1);
+  }
+  25% {
+      transform: scale(0.9);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  75% {
+      transform: scale(0.9);
+  }
+  100% {
+      transform: scale(1.1);
+  }
+}
+
+@keyframes rays {
+  0% {
+      transform: scale(1.1);
+  }
+  25% {
+      transform: scale(0.9);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  75% {
+      transform: scale(0.9);
+  }
+  100% {
+      transform: scale(1.1);
+  }
+}
+
+/*Balloon Animation*/
+@-webkit-keyframes flow {
+  0% {
+      transform: rotate(20deg);
+  }
+  50% {
+      transform: rotate(0deg);
+  }
+   100% {
+      transform: rotate(20deg);
+
+  }
+}
+
+@-moz-keyframes flow {
+  0% {
+      transform: rotate(10deg);
+      transform-origin: bottom;
+  }
+  50% {
+      transform: rotate(0deg);
+      transform-origin: bottom;
+  }
+   100% {
+      transform: rotate(10deg);
+      transform-origin: bottom;
+  }
+}
+
+@keyframes flow {
+  0% {
+      transform: rotate(10deg);
+      transform-origin: bottom;
+  }
+  50% {
+      transform: rotate(0deg);
+      transform-origin: bottom;
+  }
+   100% {
+      transform: rotate(10deg);
+      transform-origin: bottom;
+  }
+}
+
+/*String Animation*/
+@-webkit-keyframes string {
+  0% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+  50% {
+      transform: rotate(0deg);
+      transform-origin: bottom;
+  }
+   100% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+}
+
+@-moz-keyframes string {
+  0% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+  50% {
+      transform: rotate(0deg);
+      transform-origin: bottom;
+  }
+   100% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+}
+
+@keyframes string {
+  0% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+  50% {
+      transform: rotate(0deg);
+      transform-origin: bottom;
+  }
+   100% {
+      transform: rotate(3deg);
+      transform-origin: bottom;
+  }
+}
+
