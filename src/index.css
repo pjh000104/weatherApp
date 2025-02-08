@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -33,29 +34,54 @@ body {
   align-items:center;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  background-color: #f4f2f2;
+  border: none;
+
 }
-button:hover {
-  border-color: #646cff;
+
+
+/* From Uiverse.io by joe-watson-sbf */ 
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.search_input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  width: 12em;
+  transition: all ease-in-out .5s;
+
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -71,276 +97,119 @@ button:focus-visible {
 }
 
 
-.inner_bg{
-  background-image: url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rain_animation_homedepot5.gif);
+/* From Uiverse.io by vinodjangid07 */ 
+.cardContainer {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background-color: rgba(65, 65, 65, 0.308);
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  cursor: pointer;
+}
+
+.city {
+  font-weight: 700;
+  font-size: 2.1em;
+  letter-spacing: 1.2px;
+  color: white;
+}
+
+.weather {
+  font-weight: 500;
+  font-size: 0.7em;
+  letter-spacing: 1.2px;
+  color: white;
+}
+
+.icon {
+  max-width: 7em;
+  max-height: 7em;
+}
+.temp {
+  font-size: 1.8em;
+  color: white;
+}
+
+.minmaxContainer {
   width: 100%;
-  height: 516px;
-  /* let's lighten it up */
-    opacity: 0.2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.rainy {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rainstill_homedepot.jpg), 
-                    url(https://s.w-x.co/ads/creatives/homedepot/bwbb/bg_l_rain_animation_homedepot5.gif);
-  background-repeat: no-repeat, no-repeat;
-  background-position: center top, center top;
-  background-size: cover, cover;
-  z-index: -1; /* Ensures it stays behind the content */
+.min,
+.max {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 4px;
 }
 
-
-
-
-.ground {
-position: absolute;
-bottom: 0;
-right: -1em;
-background: linear-gradient(to bottom, #658433, #36471b);
-height: 6em;
-width: 101%;
-border-radius: 50% 50% 0 0;
-box-shadow: inset 0 .5em 1em lightyellow;
+.max {
+  align-items: flex-start;
+  border-left: 2px solid white;
 }
 
-.tree.one > .top {
-position: absolute;
-bottom: 12em;
-right: 7em;
-background: linear-gradient(to bottom, #99AC5E, #658433);
-height: 10em;
-width: 10em;
-border-radius: 50%;
-box-shadow: inset .5em 1em 5em lightyellow;
-}
-.tree.one > .overlap {
-position: absolute;
-bottom: 12.5em;
-right: 10em;
-background: linear-gradient(to bottom, transparent, #99AC5E 98%);
-height: 2em;
-width: 3.5em;
-border-radius: 50%;
-box-shadow: 0 .3em .2em #36471b;
-z-index: 2;
-}
-.tree.one > .trunk {
-position: absolute;
-bottom: 3em;
-right: 11em;
-background: linear-gradient(#8e724e, #422f15);
-height: 10em;
-width: 1.5em;
-border-radius: .1em;
-box-shadow: inset .1em 0em .2em lightyellow;
+.maxHeading,
+.minHeading,
+.humidityHeading {
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
 }
 
-.tree.two > .top {
-position: absolute;
-bottom: 10em;
-right: 24em;
-background: linear-gradient(to bottom, #99AC5E, #658433);
-height: 7em;
-width: 7em;
-border-radius: 50%;
-box-shadow: inset .5em 1em 5em lightyellow;
-}
-.tree.two > .overlap {
-position: absolute;
-bottom: 10.5em;
-right: 26em;
-background: linear-gradient(to bottom, transparent, #99AC5E 98%);
-height: 2em;
-width: 2.5em;
-border-radius: 50%;
-box-shadow: 0 .3em .2em #36471b;
-z-index: 2;
-}
-.tree.two > .trunk {
-position: absolute;
-bottom: 3em;
-right: 26.5em;
-background: linear-gradient(#8e724e, #422f15);
-height: 8em;
-width: 1.5em;
-border-radius: .1em;
-box-shadow: inset .1em 0em .2em lightyellow;
+.maxTemp,
+.minTemp,
+.humidity {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
 }
 
-
-.sun-rays {
-position: absolute;
-bottom: 32em;
-right: 18em;
-height: 15em;
-width: 15em;
-z-index: -5;
-background: radial-gradient(rgba(255, 237, 175, .8) 50%, rgba(255, 237, 175, .2) 70%);
-border-radius: 50%;
-box-shadow: 0 0 .5em rgba(255, 237, 175, 1);
--webkit-animation: rays 10s infinite;
--moz-animation: rays 10s infinite;
-animation: rays 10s infinite;
-}
-.sun {
-position: absolute;
-bottom: 34.5em;
-right: 20.5em;
-height: 10em;
-width: 10em;
-z-index: -5;
-background: rgba(255, 237, 175, 1);
-border-radius: 50%;
-box-shadow: 0 0 1em rgba(255, 237, 175, .5), inset 0 0 .5em #FFFFAD;
+.humidityContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-
-/*Sun Animation*/
-@-webkit-keyframes rays {
-  0% {
-      transform: scale(1.1);
-  }
-  25% {
-      transform: scale(0.9);
-  }
-  50% {
-      transform: scale(1.1);
-  }
-  75% {
-      transform: scale(0.9);
-  }
-  100% {
-      transform: scale(1.1);
-  }
+.discription {
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
+  overflow-wrap: break-word;
+}
+.cardContainer::before {
+  width: 100px;
+  height: 100px;
+  content: "";
+  position: absolute;
+  background-color: rgb(144, 161, 255);
+  z-index: -1;
+  border-radius: 50%;
+  left: 100px;
+  top: 50px;
+  transition: all 1s;
 }
 
-@-moz-keyframes rays {
-  0% {
-      transform: scale(1.1);
-  }
-  25% {
-      transform: scale(0.9);
-  }
-  50% {
-      transform: scale(1.1);
-  }
-  75% {
-      transform: scale(0.9);
-  }
-  100% {
-      transform: scale(1.1);
-  }
+.cardContainer:hover::before {
+  transform: translate(-50px, 50px);
 }
 
-@keyframes rays {
-  0% {
-      transform: scale(1.1);
-  }
-  25% {
-      transform: scale(0.9);
-  }
-  50% {
-      transform: scale(1.1);
-  }
-  75% {
-      transform: scale(0.9);
-  }
-  100% {
-      transform: scale(1.1);
-  }
-}
-
-/*Balloon Animation*/
-@-webkit-keyframes flow {
-  0% {
-      transform: rotate(20deg);
-  }
-  50% {
-      transform: rotate(0deg);
-  }
-   100% {
-      transform: rotate(20deg);
-
-  }
-}
-
-@-moz-keyframes flow {
-  0% {
-      transform: rotate(10deg);
-      transform-origin: bottom;
-  }
-  50% {
-      transform: rotate(0deg);
-      transform-origin: bottom;
-  }
-   100% {
-      transform: rotate(10deg);
-      transform-origin: bottom;
-  }
-}
-
-@keyframes flow {
-  0% {
-      transform: rotate(10deg);
-      transform-origin: bottom;
-  }
-  50% {
-      transform: rotate(0deg);
-      transform-origin: bottom;
-  }
-   100% {
-      transform: rotate(10deg);
-      transform-origin: bottom;
-  }
-}
-
-/*String Animation*/
-@-webkit-keyframes string {
-  0% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-  50% {
-      transform: rotate(0deg);
-      transform-origin: bottom;
-  }
-   100% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-}
-
-@-moz-keyframes string {
-  0% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-  50% {
-      transform: rotate(0deg);
-      transform-origin: bottom;
-  }
-   100% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-}
-
-@keyframes string {
-  0% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-  50% {
-      transform: rotate(0deg);
-      transform-origin: bottom;
-  }
-   100% {
-      transform: rotate(3deg);
-      transform-origin: bottom;
-  }
-}
 
