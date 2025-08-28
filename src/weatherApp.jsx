@@ -29,7 +29,7 @@ export default function TestBlock() {
     useEffect(() => {
         // fetch weather data from api
         const fetchData = async () => {
-            const url = `http://localhost:8080/weather?location=${city}`;
+            const url = `https://springbootweatherapi.onrender.com/weather?location=${city}`;
             try {
                 const response = await axios.get(url);
                 setWeatherData(response.data);
