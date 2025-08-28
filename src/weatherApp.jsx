@@ -9,12 +9,27 @@ import cloudicon from "./assets/cloud.svg"
 export default function TestBlock() {
     const [city, setCity] = useState('Wooster');
     const [weatherData, setWeatherData] = useState(null);
-    const [inputValue, setInputValue] = useState(''); 
+    const [inputValue, setInputValue] = useState('');
+    const [Fahrenheit, setFahrenheit] = useState(true) 
+
+    // useEffect(() => {
+    //     // fetch weather data from api
+    //     const fetchData = async () => {
+    //         const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=JYANY48SJE9QHGN9YBNCWFCKM`;
+    //         try {
+    //             const response = await axios.get(url);
+    //             setWeatherData(response.data);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [city]);
 
     useEffect(() => {
         // fetch weather data from api
         const fetchData = async () => {
-            const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=JYANY48SJE9QHGN9YBNCWFCKM`;
+            const url = `http://localhost:8080/weather?location=${city}`;
             try {
                 const response = await axios.get(url);
                 setWeatherData(response.data);
@@ -23,6 +38,7 @@ export default function TestBlock() {
             }
         };
         fetchData();
+        // console.log(weatherData)
     }, [city]);
 
     function handleInputChange(e) {
@@ -33,7 +49,14 @@ export default function TestBlock() {
         e.preventDefault(); 
         setCity(inputValue); // Update the city state with the input value when the button is pressed
     }
+    
+    function changeFtoC(temp) {
+        return (((temp-32) *5)/9).toFixed(2)
+    }
 
+    function changeFarenheit() {
+        setFahrenheit(!Fahrenheit);
+    }
     // constants to display 
     const temp = weatherData?.currentConditions?.temp;
     const humidity = weatherData?.currentConditions?.humidity;
@@ -41,8 +64,15 @@ export default function TestBlock() {
     const tempMin = weatherData?.days[0].tempmin;
     const description = weatherData?.days[0].description;
     const weather = weatherData?.days[0].icon;
-    console.log(weather)
     
+    const weatherInfo = {
+        temp: { f: weatherData?.currentConditions?.temp, c: changeFtoC( weatherData?.currentConditions?.temp)},
+        humidity: weatherData?.currentConditions?.humidity,
+        tempMax: { f: weatherData?.days[0].tempmax, c: changeFtoC(weatherData?.days[0].tempmax) },
+        tempMin: { f: weatherData?.days[0].tempmin, c: changeFtoC(weatherData?.days[0].tempmin) },
+        description: weatherData?.days[0].description,
+        icon: weatherData?.days[0].icon
+    };
     return (
         <div className='page'>
             <div className='cardContainer'>
@@ -51,29 +81,31 @@ export default function TestBlock() {
                         {city}
                     </div>
                     <div className="weather">
-                        {weather === "snow" ? <img className='icon' src={snowicon} alt=""/>
-                        : weather === "partly-cloudy-day" ? <img className='icon' src={cloudicon} alt=""/>
-                        : weather === "cloud" ? <img className='icon' src={cloudicon} alt=""/>
-                        : weather === "rain" ? <img className='icon' src={rainicon} alt=""/>
+                        {weatherInfo.icon === "snow" ? <img className='icon' src={snowicon} alt=""/>
+                        : weatherInfo.icon === "partly-cloudy-day" ? <img className='icon' src={cloudicon} alt=""/>
+                        : weatherInfo.icon === "cloud" ? <img className='icon' src={cloudicon} alt=""/>
+                        : weatherInfo.icon === "rain" ? <img className='icon' src={rainicon} alt=""/>
                         : <img className='icon' src={sunicon} alt=""/>}
                     </div>
-                    <div className="temp">{temp}</div>
+                    <div className="temp">
+                        {Fahrenheit ? weatherInfo.temp.f : weatherInfo.temp.c}°{Fahrenheit ? "F" : "C"}
+                    </div>
                     <div className="minmaxContainer">
                         <div class="min">
                             <p class="minHeading">Min</p>
-                            <p class="minTemp">{tempMin}</p>
+                            <p class="minTemp">{Fahrenheit ? weatherInfo.tempMin.f: weatherInfo.tempMin.c}°{Fahrenheit ? "F" : "C"}</p>
                         </div>
                         <div class="max">
                             <p class="maxHeading">Max</p>
-                            <p class="maxTemp">{tempMax}</p>
+                            <p class="maxTemp">{Fahrenheit ? weatherInfo.tempMax.f: weatherInfo.tempMax.c}°{Fahrenheit ? "F" : "C"}</p>
                         </div>
                     </div>
                     <div className="humidityContainer">
                         <p class="humidityHeading">Humidity(%):</p>
-                        <p className='humidity'>{humidity}</p> 
+                        <p className='humidity'>{weatherInfo.humidity}</p> 
                     </div>
                     <div className="discription">
-                        <p>Note: {description} </p>
+                        <p>Note: {weatherInfo.description} </p>
                     </div>
         
                 </div>
@@ -88,8 +120,8 @@ export default function TestBlock() {
                         placeholder="enter city"
                     />
                     <button className='search_button' type="submit">Search</button>
+                    <button className='c/f' onClick={changeFarenheit} type="button">Change Metrics</button>
                 </div>
-                
             </form>
         </div>
     );
